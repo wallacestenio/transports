@@ -13,7 +13,15 @@ class TrackingController extends Controller
      */ 
     public function __invoke(Request $request)
     {
-        $trakings = Frete::where('codigo_rastreio', '382451')->first();
+
+        $codRastreio = $request->input('codigo_rastreio');
+        
+
+        $trakings = Frete::where('codigo_rastreio', $codRastreio)
+        ->with('etapas')
+        ->first();
+
+        $trakings->etapas;
 
              return view('frete.tracking', [
             'trakings' => $trakings

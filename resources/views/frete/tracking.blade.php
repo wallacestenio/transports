@@ -30,13 +30,18 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($trakings->etapas as $etapa)
                 <tr class="hover:bg-gray-50 transition-colors border-b">
+                    
                     <td class="px-6 py-4">
-                        Transferido da unidade A para unidade B
+                        
+                        <p>{{ $etapa->descricao }}</p>
+                        
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        01/05/2026
+                        <p>{{ $etapa->created_at->format('d/m/Y H:i:s') }}</p>
                     </td>
+                    @endforeach
                 </tr>
             </tbody>
         </table>
